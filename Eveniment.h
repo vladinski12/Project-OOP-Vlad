@@ -14,4 +14,9 @@ public:
 	Eveniment(string data, string ora, char* denumire);
 	Eveniment(const Eveniment& e);
 	~Eveniment();
+
+	string getData();
+	string getOra();
+	char* getDenumire();
+	void setDenumire(const char* denumire);
 };

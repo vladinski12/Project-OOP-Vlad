@@ -15,5 +15,14 @@ public:
 	Locatie(double nrRanduri,double nrMAXlocuri,int** locuri);
 	Locatie(const Locatie& l);
 	~Locatie();
+
+	string getDenumire();
+	void setDenumire(string denumire);
+	double getNrMAXlocuri();
+	void setNrMAXlocuri(double nrMAXlocuri);
+	double getNrRanduri();
+	void setNrRanduri(double nrRanduri);
+	int** getLocuri();
+	void setLocuri(int** locuri,double nrRanduri,double nrColoane);
 };
 

@@ -21,8 +21,34 @@ Bilete::Bilete(double bileteTotalePtEveniment, double bileteVandutePtEveniment, 
 		this->tip = tip;
 }
 
-double Bilete::getBileteTotale() {
-	return bileteTotale;
+double Bilete::getBileteTotalePtEveniment() {
+	return bileteTotalePtEveniment;
 }
+
+void Bilete::setBileteTotalePtEveniment(double bileteTotale) {
+	if (bileteTotale >= 0) { this->bileteTotalePtEveniment = bileteTotale; }
+}
+
+double Bilete::getBileteVandutePtEveniment() {
+	return bileteVandutePtEveniment;
+}
+
+void Bilete::setBileteVandutePtEveniment(double bileteVandute) {
+	if (bileteVandute >= 0) { this->bileteVandutePtEveniment = bileteVandute; }
+}
+
+double Bilete::getBileteDisponibilePtEveniment() {
+	return bileteDisponibilePtEveniment;
+}
+
+void Bilete::setBileteDisponibilePtEveniment(double bileteDisponibile) {
+	if (bileteDisponibile >= 0) { this->bileteDisponibilePtEveniment = bileteDisponibile; }
+}
+
+
+
+
+
+
 
 

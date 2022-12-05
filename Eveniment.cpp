@@ -21,3 +21,26 @@ Eveniment::Eveniment(const Eveniment& e)
 Eveniment::~Eveniment() {
 	if (denumire != nullptr)delete[] denumire;
 }
+
+string Eveniment::getData() {
+	return data;
+}
+
+string Eveniment::getOra(){
+	return ora; 
+}
+
+char* Eveniment::getDenumire() {
+	return denumire; 
+}
+
+void Eveniment::setDenumire(const char* denumire) {
+	if (denumire != nullptr) {
+		if (this->denumire != nullptr) {
+			delete[] this->denumire;
+			this->denumire = nullptr;
+		}
+		this->denumire = new char[strlen(denumire) + 1];
+		strcpy_s(this->denumire, strlen(denumire) + 1, denumire);
+	}
+}

@@ -15,5 +15,16 @@ private:
 public:
 	Bilete();
 	Bilete(double bileteTotalePtEveniment, double bileteVandutePtEveniment, double bileteDisponibilePtEveniment,string tip);
-	static double getBileteTotale();
+
+	double getBileteTotalePtEveniment();
+
+	void setBileteTotalePtEveniment(double bileteTotale);
+
+	double getBileteVandutePtEveniment();
+
+	void setBileteVandutePtEveniment(double bileteVandute);
+
+	double getBileteDisponibilePtEveniment();
+
+	void setBileteDisponibilePtEveniment(double bileteDisponibile);
 };
