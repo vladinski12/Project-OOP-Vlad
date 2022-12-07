@@ -4,6 +4,7 @@ using namespace std;
 
 class Bilete {
 private:
+	double id;
 	double bileteTotalePtEveniment;
 	double bileteVandutePtEveniment;
 	double bileteDisponibilePtEveniment;
@@ -27,4 +28,8 @@ public:
 	double getBileteDisponibilePtEveniment();
 
 	void setBileteDisponibilePtEveniment(double bileteDisponibile);
+
+	static bool checkBilete();
+
+	friend ostream& operator<<(ostream& out,const Bilete b);
 };

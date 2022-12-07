@@ -6,6 +6,7 @@ double Bilete::bileteDisponibile = 0;
 
 Bilete::Bilete()
 {
+		id = bileteTotale;
 		bileteTotalePtEveniment = 0;
 		bileteVandutePtEveniment = 0;
 		bileteDisponibilePtEveniment = 0;
@@ -45,6 +46,22 @@ void Bilete::setBileteDisponibilePtEveniment(double bileteDisponibile) {
 	if (bileteDisponibile >= 0) { this->bileteDisponibilePtEveniment = bileteDisponibile; }
 }
 
+bool Bilete::checkBilete() {
+	if (bileteTotale == bileteVandute + bileteDisponibile)
+		return true;
+	else
+		return false;
+}
+
+ostream& operator<<(ostream& out,const Bilete b) {
+	out<<this->bileteTotalePtEveniment;
+	double bileteVandutePtEveniment;
+	double bileteDisponibilePtEveniment;
+	static double bileteTotale;
+	static double bileteVandute;
+	static double bileteDisponibile;
+	string tip;
+}
 
 
 

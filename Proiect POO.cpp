@@ -8,7 +8,7 @@ Clasele trebuie să conțină(per total, nu fiecare)
 	un vector numeric alocat dinamic,																		X
 	un câmp constant,																						X
 	un câmp static																							X
-	și o metodă statică.																					?
+	și o metodă statică.																					X
 Membrii trebuie să aibă legătură cu clasa.																	X
 Toate atributele vor fi definite în zona privată a clasei													X
 Toate atributele vor avea metode de acces; setterii vor conține validări									X
@@ -17,7 +17,7 @@ Fiecare clasa va conține cel puțin 2 metode generice(altele decât constructor
 Fiecare clasă va conține cel puțin un constructor implicit și unul cu parametri.
 	Clasele cu membri pointeri vor respecta „regula celor 3”.												X
 Fiecare clasă va conține supraîncărcări pentru operatorii << și >>											?
-Fiecare clasă va avea cel puțin 2 operatori supraîncărcați dintre următorii
+Fiecare clasă va avea cel puțin 2 operatori supraîncărcați dintre următorii									?
 	(același operator nu poate fi supraîncărcat în 2 clase diferite) :								
 		operator de indexare[]
 		operatori aritmetici(+, -, *or /)
