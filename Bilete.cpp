@@ -1,4 +1,6 @@
+#include <iostream>
 #include "Bilete.h"
+using namespace std;
 
 double Bilete::bileteTotale = 0;
 double Bilete::bileteVandute = 0;
@@ -6,6 +8,7 @@ double Bilete::bileteDisponibile = 0;
 
 Bilete::Bilete()
 {
+		Bilete::bileteTotale++;
 		id = bileteTotale;
 		bileteTotalePtEveniment = 0;
 		bileteVandutePtEveniment = 0;
@@ -54,12 +57,9 @@ bool Bilete::checkBilete() {
 }
 
 ostream& operator<<(ostream& out,const Bilete b) {
-	out<<this->bileteTotalePtEveniment;
-	double bileteVandutePtEveniment;
-	double bileteDisponibilePtEveniment;
-	static double bileteTotale;
-	static double bileteVandute;
-	static double bileteDisponibile;
+	out<<b.bileteTotalePtEveniment;
+	out << b.bileteVandutePtEveniment;
+	out << b.bileteDisponibilePtEveniment;
 	string tip;
 }
 
