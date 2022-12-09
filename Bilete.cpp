@@ -57,10 +57,10 @@ bool Bilete::checkBilete() {
 }
 
 ostream& operator<<(ostream& out,const Bilete b) {
-	out<<b.bileteTotalePtEveniment;
+	out << b.bileteTotalePtEveniment;
 	out << b.bileteVandutePtEveniment;
 	out << b.bileteDisponibilePtEveniment;
-	string tip;
+	out << b.tip;
 }
 
 

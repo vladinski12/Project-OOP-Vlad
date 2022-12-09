@@ -15,6 +15,7 @@ private:
 	
 public:
 	Bilete();
+	
 	Bilete(double bileteTotalePtEveniment, double bileteVandutePtEveniment, double bileteDisponibilePtEveniment,string tip);
 
 	double getBileteTotalePtEveniment();
