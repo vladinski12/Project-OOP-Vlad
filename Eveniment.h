@@ -6,18 +6,20 @@ using namespace std;
 class Eveniment 
 {
 private:
-	const string data;
-	const string ora;
+	string data;
+	string ora;
 	char* denumire;
 
 public:
 	Eveniment();
-	Eveniment(string data, string ora, char* denumire);
+	Eveniment(string data, string ora, const char* denumire);
 	Eveniment(const Eveniment& e);
 	~Eveniment();
 
 	string getData();
+	void setData(string data);
 	string getOra();
+	void setOra(string ora);
 	char* getDenumire();
 	void setDenumire(const char* denumire);
 

@@ -6,7 +6,7 @@ class Bilete {
 	
 private:
 	
-	long id;
+	const long id;
 	static double bileteTotale;
 	static double bileteVandute;
 	static double bileteDisponibile;
@@ -32,4 +32,6 @@ public:
 	friend istream& operator>>(istream& in, Bilete& b);
 
 	friend ostream& operator<<(ostream& out,const Bilete b);
+
+	Bilete operator+(Bilete b);
 };

@@ -24,5 +24,9 @@ public:
 	void setNrRanduri(double nrRanduri);
 	int** getLocuri();
 	void setLocuri(int** locuri,double nrRanduri,double nrColoane);
+
+	friend istream& operator>>(istream& in, Locatie& l);
+	
+	friend ostream& operator<<(ostream& out,Locatie l);
 };
 

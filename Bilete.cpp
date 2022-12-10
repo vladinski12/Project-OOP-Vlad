@@ -6,10 +6,8 @@ double Bilete::bileteTotale = 0;
 double Bilete::bileteVandute = 0;
 double Bilete::bileteDisponibile = 0;
 
-Bilete::Bilete()
+Bilete::Bilete() :id(++Bilete::bileteTotale)
 {
-		Bilete::bileteTotale++;
-		id = bileteTotale;
 		tip = "-";
 		loc = "-";
 }
@@ -46,19 +44,24 @@ bool Bilete::checkBilete() {
 istream& operator>>(istream& in, Bilete& b) {
 	cout << "Introduceti tipul de bilet: ";
 	in >> b.tip;
-	cout << "Introduceti locul de bilet: ";
+	cout << "Introduceti locul: ";
 	in >> b.loc;
 	cout << endl;
 	return in;
 }
 
 ostream& operator<<(ostream& out,const Bilete b) {
+	cout << endl;
 	out << "ID: " + to_string(b.id) << endl;
 	out <<"Tipul biletului: " + b.tip << endl;
 	out << "Loc: " + b.loc<<endl;
 	return out;
 }
 
+Bilete Bilete::operator+(Bilete b) {
+	this->loc = b.getLoc() + this->loc;
+	return *this;
+}
 
 
 

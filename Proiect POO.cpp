@@ -31,6 +31,7 @@ Această fază este considerată implementată dacă cel puțin 75 % dintre ceri
 */
 
 #include <iostream>
+#include <string>
 #include "Eveniment.h"
 #include "Locatie.h"
 #include "Bilete.h"
@@ -40,7 +41,7 @@ using namespace std;
 
 int main()
 {
-	Bilete a,b;
-	cin >> a>>b;
-	cout << a<<endl<<b;
+	Locatie a, b;
+	cin >> a >> b;;
+	cout << a<<endl <<b;
 }
