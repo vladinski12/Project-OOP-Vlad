@@ -40,5 +40,7 @@ using namespace std;
 
 int main()
 {
-   cout << "Hello World!\n";
+	Bilete a,b;
+	cin >> a>>b;
+	cout << a<<endl<<b;
 }

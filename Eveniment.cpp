@@ -1,4 +1,7 @@
+#include <iostream>
+#include <string>
 #include "Eveniment.h"
+using namespace std;
 
 Eveniment::Eveniment():data("01.01.2000"),ora("00:00")
 {
@@ -43,4 +46,18 @@ void Eveniment::setDenumire(const char* denumire) {
 		this->denumire = new char[strlen(denumire) + 1];
 		strcpy_s(this->denumire, strlen(denumire) + 1, denumire);
 	}
+}
+
+istream& operator>>(istream& in, Eveniment& e) {
+	string buffer;
+	in >> buffer;
+	e.setDenumire(buffer.c_str());
+	return in;
+}
+
+ostream& operator<<(ostream& out, const Eveniment e){
+	out << e.data;
+	out << e.ora;
+	out << e.denumire;
+	return out;
 }

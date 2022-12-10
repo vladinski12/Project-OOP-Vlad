@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -19,4 +20,9 @@ public:
 	string getOra();
 	char* getDenumire();
 	void setDenumire(const char* denumire);
+
+	friend istream& operator>>(istream& in, Eveniment& e);
+
+	friend ostream& operator<<(ostream& out, const Eveniment e);
+
 };

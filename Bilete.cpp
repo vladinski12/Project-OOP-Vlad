@@ -10,43 +10,30 @@ Bilete::Bilete()
 {
 		Bilete::bileteTotale++;
 		id = bileteTotale;
-		bileteTotalePtEveniment = 0;
-		bileteVandutePtEveniment = 0;
-		bileteDisponibilePtEveniment = 0;
-		tip = "";
+		tip = "-";
+		loc = "-";
 }
 
 
-Bilete::Bilete(double bileteTotalePtEveniment, double bileteVandutePtEveniment, double bileteDisponibilePtEveniment, string tip) : Bilete()
+Bilete::Bilete( string tip,string loc) : Bilete()
 {
-		this->bileteTotalePtEveniment = bileteTotalePtEveniment;
-		this->bileteVandutePtEveniment = bileteVandutePtEveniment;
-		this->bileteDisponibilePtEveniment = bileteDisponibilePtEveniment;
 		this->tip = tip;
 }
 
-double Bilete::getBileteTotalePtEveniment() {
-	return bileteTotalePtEveniment;
+string Bilete::getTip() {
+	return tip;
 }
 
-void Bilete::setBileteTotalePtEveniment(double bileteTotale) {
-	if (bileteTotale >= 0) { this->bileteTotalePtEveniment = bileteTotale; }
+void Bilete::setTip(string tip) {
+	if (tip != "") { this->tip = tip; }
 }
 
-double Bilete::getBileteVandutePtEveniment() {
-	return bileteVandutePtEveniment;
+string Bilete::getLoc() {
+	return loc;
 }
 
-void Bilete::setBileteVandutePtEveniment(double bileteVandute) {
-	if (bileteVandute >= 0) { this->bileteVandutePtEveniment = bileteVandute; }
-}
-
-double Bilete::getBileteDisponibilePtEveniment() {
-	return bileteDisponibilePtEveniment;
-}
-
-void Bilete::setBileteDisponibilePtEveniment(double bileteDisponibile) {
-	if (bileteDisponibile >= 0) { this->bileteDisponibilePtEveniment = bileteDisponibile; }
+void Bilete::setLoc(string tip) {
+	if (loc != "") { this->loc = loc; }
 }
 
 bool Bilete::checkBilete() {
@@ -56,11 +43,20 @@ bool Bilete::checkBilete() {
 		return false;
 }
 
+istream& operator>>(istream& in, Bilete& b) {
+	cout << "Introduceti tipul de bilet: ";
+	in >> b.tip;
+	cout << "Introduceti locul de bilet: ";
+	in >> b.loc;
+	cout << endl;
+	return in;
+}
+
 ostream& operator<<(ostream& out,const Bilete b) {
-	out << b.bileteTotalePtEveniment;
-	out << b.bileteVandutePtEveniment;
-	out << b.bileteDisponibilePtEveniment;
-	out << b.tip;
+	out << "ID: " + to_string(b.id) << endl;
+	out <<"Tipul biletului: " + b.tip << endl;
+	out << "Loc: " + b.loc<<endl;
+	return out;
 }
 
 

@@ -3,34 +3,33 @@
 using namespace std;
 
 class Bilete {
+	
 private:
-	double id;
-	double bileteTotalePtEveniment;
-	double bileteVandutePtEveniment;
-	double bileteDisponibilePtEveniment;
+	
+	long id;
 	static double bileteTotale;
 	static double bileteVandute;
 	static double bileteDisponibile;
 	string tip;
+	string loc;
 	
 public:
+	
 	Bilete();
 	
-	Bilete(double bileteTotalePtEveniment, double bileteVandutePtEveniment, double bileteDisponibilePtEveniment,string tip);
+	Bilete(string tip,string loc);
 
-	double getBileteTotalePtEveniment();
+	string getTip();
 
-	void setBileteTotalePtEveniment(double bileteTotale);
+	void setTip(string tip);
 
-	double getBileteVandutePtEveniment();
+	string getLoc();
 
-	void setBileteVandutePtEveniment(double bileteVandute);
-
-	double getBileteDisponibilePtEveniment();
-
-	void setBileteDisponibilePtEveniment(double bileteDisponibile);
+	void setLoc(string loc);
 
 	static bool checkBilete();
+
+	friend istream& operator>>(istream& in, Bilete& b);
 
 	friend ostream& operator<<(ostream& out,const Bilete b);
 };
