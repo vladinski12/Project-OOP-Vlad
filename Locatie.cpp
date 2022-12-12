@@ -31,12 +31,12 @@ Locatie::Locatie(const Locatie& l) {
 	this->nrRanduri = l.nrRanduri;
 	this->nrMAXlocuri = l.nrMAXlocuri;
 	double nrColoane = nrMAXlocuri / nrRanduri;
-	if (this->locuri != nullptr) {
-		for (int i = 0; i < nrRanduri; i++) {
-			delete[] locuri[i];
-		}
-		delete[] locuri;
-	}
+	//if (this->locuri != nullptr) {
+	//	for (int i = 0; i < nrRanduri; i++) {
+	//		delete[] locuri[i];
+	//	}
+	//	delete[] locuri;
+	//}
 	this->locuri = new int* [l.nrRanduri];
 	for (int i = 0; i < nrRanduri; i++) this->locuri[i] = new int[nrColoane];
 	for (int i = 0; i < nrRanduri; i++)
@@ -127,3 +127,83 @@ ostream& operator<<(ostream& out, Locatie l) {
 	}
 	return out;
 }
+
+int* Locatie::operator[](int index) {
+	if (index >= 0 && index < nrRanduri) {
+		return locuri[index];
+	}
+}
+
+Locatie& Locatie::operator++() {
+	if (locuri != nullptr) {
+		for (int i = 0; i < nrRanduri; i++) {
+			delete[] locuri[i];
+		}
+		delete[] locuri;
+	}
+	nrRanduri++;
+	double nrColoane = nrMAXlocuri / nrRanduri;
+	locuri = new int* [nrRanduri];
+	for (int i = 0; i < nrRanduri; i++) locuri[i] = new int[nrColoane];
+	for (int i = 0; i < nrRanduri; i++)
+		for (int j = 0; j < nrColoane; j++)
+			locuri[i][j] = 0;
+	return *this;
+}
+
+Locatie& Locatie::operator--() {
+	if (locuri != nullptr) {
+		for (int i = 0; i < nrRanduri; i++) {
+			delete[] locuri[i];
+		}
+		delete[] locuri;
+	}
+	nrRanduri--;
+	double nrColoane = nrMAXlocuri / nrRanduri;
+	locuri = new int* [nrRanduri];
+	for (int i = 0; i < nrRanduri; i++) locuri[i] = new int[nrColoane];
+	for (int i = 0; i < nrRanduri; i++)
+		for (int j = 0; j < nrColoane; j++)
+			locuri[i][j] = 0;
+	return *this;
+}
+
+bool Locatie::checkLoc() {
+
+	int nrLocuri = 0;
+	for (int i = 0; i < nrRanduri; i++) {
+		for (int j = 0; j < nrMAXlocuri/nrRanduri; j++) {
+			if (locuri[i][j] == 1) {
+				nrLocuri++;
+			}
+		}
+	}
+	if (nrLocuri < nrMAXlocuri) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool Locatie::Rezervare(double locuriRez) {
+	int locPosibile = 0;
+	for (int i = 0; i < nrRanduri; i++)
+		for (int j = 0; j < nrMAXlocuri / nrRanduri; j++) {
+			if (locuri[i][j] ==0) {
+				locPosibile++;
+				}
+			}
+	if (locPosibile<locuriRez)return false;
+	else {
+		for (int i = 0; i < nrRanduri; i++)
+			for (int j = 0; j < nrMAXlocuri / nrRanduri; j++) {
+				if (locuri[i][j] != 1) {
+					locuri[i][j] = 0;
+				}
+			}
+	}
+	return true;
+}
+
+	

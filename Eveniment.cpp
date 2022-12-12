@@ -81,3 +81,54 @@ ostream& operator<<(ostream& out, const Eveniment e){
 	out <<"Denumire: " +(string) e.denumire << endl;
 	return out;
 }
+
+Eveniment& Eveniment::operator=(const Eveniment& e) {
+	this->data = e.data;
+	this->ora = e.ora;
+	if (this->denumire!=nullptr) {
+		delete[] this->denumire;
+		this->denumire = nullptr;
+	}
+	this->denumire = new char[strlen(e.denumire) + 1];
+	strcpy_s(this->denumire, strlen(e.denumire) + 1, e.denumire);
+	return *this;
+}
+
+bool Eveniment::operator==(const Eveniment& e) {
+	if (this->data == e.data && this->ora == e.ora && strcmp(this->denumire, e.denumire) == 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool Eveniment::operator!=(const Eveniment& e) {
+	if (this->data == e.data && this->ora == e.ora && strcmp(this->denumire, e.denumire) == 0) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+bool Eveniment::checkData() {
+	int zi, luna, an;
+	zi = stoi(data.substr(0, 2));
+	luna = stoi(data.substr(3, 2));
+	an = stoi(data.substr(6, 4));
+	if (zi < 1 || zi>31 || luna < 1 || luna>12 || an < 2000 || an>2020) {
+		return false;
+	}
+	else return true;
+}
+
+bool Eveniment::checkOra() {
+	int ora, minut;
+	ora = stoi(this->ora.substr(0, 2));
+	minut = stoi(this->ora.substr(3, 2));
+	if (ora < 0 || ora>23 || minut < 0 || minut>59) {
+		return false;
+	}
+	else return true;
+}

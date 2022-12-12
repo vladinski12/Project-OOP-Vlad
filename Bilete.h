@@ -15,23 +15,27 @@ private:
 	
 public:
 	
-	Bilete();
+	Bilete();													//constructor implicit
 	
-	Bilete(string tip,string loc);
+	Bilete(string tip, string loc);								//constructor cu parametri
 
-	string getTip();
+	string getTip();											//getter tip
 
-	void setTip(string tip);
+	void setTip(string tip);									//setter tip
 
-	string getLoc();
+	string getLoc();											//getter loc
 
-	void setLoc(string loc);
+	void setLoc(string loc);									//setter loc
 
-	static bool checkBilete();
+	static bool checkBilete();									//metoda statica
 
-	friend istream& operator>>(istream& in, Bilete& b);
+	friend istream& operator>>(istream& in, Bilete& b);			//supraincarcare operator >>
 
-	friend ostream& operator<<(ostream& out,const Bilete b);
+	friend ostream& operator<<(ostream& out,const Bilete b);	//supraincarcare operator <<
 
-	Bilete operator+(Bilete b);
+	Bilete operator+(Bilete b);									//supraincarcare operator +
+	
+	Bilete operator-(Bilete b);									//supraincarcare operator -
+
+	void buyTicket();											//metoda de cumparare a unui bilet
 };

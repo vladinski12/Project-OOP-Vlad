@@ -63,7 +63,15 @@ Bilete Bilete::operator+(Bilete b) {
 	return *this;
 }
 
+Bilete Bilete::operator-(Bilete b) {
+	this->loc = to_string(stoi(b.getLoc()) - stoi(this->loc));
+	return *this;
+}
 
+void Bilete::buyTicket() {
+	Bilete::bileteVandute++;
+	Bilete::bileteDisponibile--;
+}
 
 
 
