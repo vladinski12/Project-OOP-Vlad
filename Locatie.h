@@ -45,8 +45,8 @@ public:
 
 	Locatie& operator--();												//supraincarcarea operatorului --
 		
-	bool checkLoc();
+	bool checkLoc();													//metoda verifica loc
 
-	bool Rezervare(double locuriRez);
+	bool Rezervare(double locuriRez);									//metoda rezerva locuri
 };
 
