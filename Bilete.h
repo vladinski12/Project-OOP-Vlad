@@ -38,4 +38,6 @@ public:
 	Bilete operator-(Bilete b);									//supraincarcare operator -
 
 	void buyTicket();											//metoda de cumparare a unui bilet
+
+	void showTicket();											//metoda de afisare a unui bilet
 };

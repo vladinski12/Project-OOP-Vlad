@@ -73,6 +73,10 @@ void Bilete::buyTicket() {
 	Bilete::bileteDisponibile--;
 }
 
+void Bilete::showTicket() {
+	cout << "Bilete totale: " << Bilete::bileteTotale << endl;
+	cout << "Bilete vandute: " << Bilete::bileteVandute << endl;
+}
 
 
 
