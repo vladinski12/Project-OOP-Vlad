@@ -41,5 +41,7 @@ using namespace std;
 
 int main()
 {
-	return 0;
+	Bilete b;
+	cin >> b;
+	cout << b;
 }
