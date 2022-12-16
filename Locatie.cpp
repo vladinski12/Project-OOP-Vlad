@@ -100,7 +100,7 @@ void  Locatie::setLocuri(int** locuri, double nrRanduri, double nrColoane){
 
 istream& operator>>(istream& in, Locatie& l) {
 	cout << "Denumire locatie: ";
-	in >> l.denumire;
+	getline(in, l.denumire);
 	cout << "Numar randuri: ";
 	in >> l.nrRanduri;
 	cout << "Numar locuri: ";

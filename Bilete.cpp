@@ -43,9 +43,9 @@ bool Bilete::checkBilete() {
 
 istream& operator>>(istream& in, Bilete& b) {
 	cout << "Introduceti tipul de bilet: ";
-	in >> b.tip;
+	getline(in, b.tip);
 	cout << "Introduceti locul: ";
-	in >> b.loc;
+	getline(in, b.loc);
 	cout << endl;
 	return in;
 }
