@@ -3,6 +3,10 @@
 #include "Eveniment.h"
 using namespace std;
 
+double Eveniment::bileteTotale = 0;
+double Eveniment::bileteVandute = 0;
+double Eveniment::bileteDisponibile = 0;
+
 Eveniment::Eveniment()
 {
 	data = "01.01.2000"; 
@@ -63,6 +67,7 @@ void Eveniment::setDenumire(const char* denumire) {
 }
 
 istream& operator>>(istream& in, Eveniment& e) {
+	in >> (Locatie&)e;
 	cout << "Data: ";
 	in >> e.data;
 	cout << "Ora: ";
@@ -79,6 +84,7 @@ ostream& operator<<(ostream& out, const Eveniment e){
 	out <<"Data: " + e.data << endl;
 	out <<"Ora: " + e.ora << endl;
 	out <<"Denumire: " +(string) e.denumire << endl;
+	out << (Locatie)e;
 	return out;
 }
 

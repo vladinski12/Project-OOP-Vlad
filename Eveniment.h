@@ -1,14 +1,20 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Locatie.h"
 using namespace std;
 
-class Eveniment 
+class Eveniment : public Locatie
 {
 private:
+	static double bileteTotale;
+	static double bileteVandute;
+	static double bileteDisponibile;
 	string data;
 	string ora;
 	char* denumire;
+
+	friend class Bilete;
 
 public:
 	Eveniment();													//constructor implicit

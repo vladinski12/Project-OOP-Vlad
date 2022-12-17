@@ -41,7 +41,8 @@ using namespace std;
 
 int main()
 {
-	Bilete b;
+	Bilete a,b,c("Standard","35");
 	cin >> b;
-	cout << b;
+	a.setOra("23:00");
+	cout << a<<b<<c;
 }
