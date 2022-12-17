@@ -1,15 +1,13 @@
 #pragma once
 #include <string>
+#include "Eveniment.h"
 using namespace std;
 
-class Bilete {
+class Bilete : public Eveniment {
 	
 private:
 	
 	const long id;
-	static double bileteTotale;
-	static double bileteVandute;
-	static double bileteDisponibile;
 	string tip;
 	string loc;
 	

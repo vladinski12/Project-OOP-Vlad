@@ -1,12 +1,9 @@
 #include <iostream>
 #include "Bilete.h"
+#include "Eveniment.h"
 using namespace std;
 
-double Bilete::bileteTotale = 0;
-double Bilete::bileteVandute = 0;
-double Bilete::bileteDisponibile = 0;
-
-Bilete::Bilete() :id(++Bilete::bileteTotale)
+Bilete::Bilete() :id(++Eveniment::bileteTotale)
 {
 		tip = "-";
 		loc = "-";
@@ -35,17 +32,18 @@ void Bilete::setLoc(string tip) {
 }
 
 bool Bilete::checkBilete() {
-	if (bileteTotale == bileteVandute + bileteDisponibile)
+	if (Eveniment::bileteTotale == Eveniment::bileteVandute + Eveniment::bileteDisponibile)
 		return true;
 	else
 		return false;
 }
 
 istream& operator>>(istream& in, Bilete& b) {
+	in >> (Eveniment&)b;
 	cout << "Introduceti tipul de bilet: ";
-	getline(in, b.tip);
+	in >> b.tip;
 	cout << "Introduceti locul: ";
-	getline(in, b.loc);
+	in >> b.loc;
 	cout << endl;
 	return in;
 }
@@ -55,6 +53,7 @@ ostream& operator<<(ostream& out,const Bilete b) {
 	out << "ID: " + to_string(b.id) << endl;
 	out <<"Tipul biletului: " + b.tip << endl;
 	out << "Loc: " + b.loc<<endl;
+	out << (Eveniment)b;
 	return out;
 }
 
