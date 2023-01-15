@@ -35,7 +35,7 @@ vector<Eveniment> evenimenteDisponibile() {
     vector<Eveniment>e;
     for (int i = 0; i < n; i++) {
         Eveniment ei;
-        string data, ora,buffer;
+        string data, ora, buffer;
         f >> data;
         f >> ora;
         f >> buffer;
@@ -47,7 +47,7 @@ vector<Eveniment> evenimenteDisponibile() {
     return e;
 }
 
-void DisplayEvenimente(int &alegere)
+void DisplayEvenimente(int& alegere)
 {
     system("cls");
     cout << "Optiuni\n";
@@ -55,7 +55,7 @@ void DisplayEvenimente(int &alegere)
     for (int i = 0; i < e.size(); i++) {
         cout << e[i].getDenumire() << endl;
     }
-    cout << 1 <<" - Iesire\n";
+    cout << 1 << " - Iesire\n";
     if (e.size() != 0) {
         cout << "Optiunea: ";
         alegere = getInput();
@@ -73,6 +73,14 @@ void DisplayEvenimente(int &alegere)
     }
 }
 
+
+
+void cumparaBilet() {
+    vector<Eveniment>e = evenimenteDisponibile();
+    for (int i = 0; i < e.size(); i++) {
+        cout << e[i] << endl;
+    }
+}
 
 void DisplayOptiuni()
 {
@@ -110,14 +118,6 @@ void Optiuni(int& alegere)
         cout << endl << "Nu sunt evenimente disponibile" << endl;
     }
 }
-
-void cumparaBilet() {
-    vector<Eveniment>e = evenimenteDisponibile();
-    for (int i = 0; i < e.size(); i++) {
-        cout << e[i] << endl;
-    }
-}
-
 
 int main()
 {

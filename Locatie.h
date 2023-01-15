@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-class Locatie 
+class Locatie
 {
 private:
 	string denumire;
@@ -45,7 +45,7 @@ public:
 
 	Locatie& operator--();												//supraincarcarea operatorului --
 		
-	bool checkLoc();													//metoda verifica loc
+	virtual bool checkLoc();													//metoda verifica loc
 
 	bool Rezervare(long locuriRez);										//metoda rezerva locuri
 };

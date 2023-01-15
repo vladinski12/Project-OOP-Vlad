@@ -1,10 +1,9 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Locatie.h"
 using namespace std;
 
-class Eveniment : public Locatie
+class Eveniment
 {
 private:
 	string data;

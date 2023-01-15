@@ -4,9 +4,9 @@
 #include "Bilete.h"
 using namespace std;
 
-double Bilete::bileteTotale = 0;
+double Bilete::bileteTotale = 1000;
 double Bilete::bileteVandute = 0;
-double Bilete::bileteDisponibile = 0;
+double Bilete::bileteDisponibile = 1000;
 
 Bilete::Bilete() :id(++Bilete::bileteTotale)
 {
@@ -71,23 +71,27 @@ Bilete Bilete::operator-(Bilete b) {
 }
 
 void Bilete::buyTicket(Eveniment e) {
-	
-	ofstream f("bilete.bin", ios::out | ios::binary);
-	if (f.is_open()) {
-		string buffer(e.getDenumire());
-		int length = buffer.length();
-		f.write((char*)&length, sizeof(length));
-		f.write(buffer.c_str(), length+1);
-		string dash = "-";
-		length = dash.length();
-		f.write((char*)&length, sizeof(length));
-		f.write(dash.c_str(), length + 1);
-		f.write((char*)&id, sizeof(id));
-		f.write((char*)&id, sizeof(id));
-		f.close();
-	}
-	else {
-		cout << "Fisierul nu a putut fi deschis!";
+	if (bileteDisponibile > 0) {
+		bileteTotale++;
+		bileteDisponibile--;
+		bileteVandute++;
+		ofstream f("bilete.bin", ios::out | ios::binary);
+		if (f.is_open()) {
+			string buffer(e.getDenumire());
+			int length = buffer.length();
+			f.write((char*)&length, sizeof(length));
+			f.write(buffer.c_str(), length + 1);
+			string dash = "-";
+			length = dash.length();
+			f.write((char*)&length, sizeof(length));
+			f.write(dash.c_str(), length + 1);
+			f.write((char*)&id, sizeof(id));
+			f.write((char*)&id, sizeof(id));
+			f.close();
+		}
+		else {
+			cout << "Fisierul nu a putut fi deschis!";
+		}
 	}
 }
 
