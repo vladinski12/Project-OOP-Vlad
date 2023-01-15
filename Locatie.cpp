@@ -162,7 +162,7 @@ Locatie& Locatie::operator--() {
 	return *this;
 }
 
-virtual bool Locatie::checkLoc() {
+bool Locatie::checkLoc() {
 
 	int nrLocuri = 0;
 	for (int i = 0; i < nrRanduri; i++) {

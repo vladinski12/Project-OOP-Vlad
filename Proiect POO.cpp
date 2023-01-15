@@ -24,7 +24,8 @@ void DisplayMeniu()
     cout << "Introdu optiunea\n";
     cout << "1 - Evenimente disponibile\n";
     cout << "2 - Cumpara bilet\n";
-    cout << "3 - Iesire\n";
+    cout << "3-  Adauga Eveniment\n";
+    cout << "4 - Iesire\n";
     cout << "Optiunea: ";
 }
 
@@ -47,11 +48,18 @@ vector<Eveniment> evenimenteDisponibile() {
     return e;
 }
 
-void DisplayEvenimente(int& alegere)
+void AdaugaEveniment(vector<Eveniment> &e) {
+    system("cls");
+    Eveniment e1;
+    cin >> e1;
+    e.push_back(e1);
+    return;
+}
+
+void DisplayEvenimente(vector<Eveniment>e ,int& alegere)
 {
     system("cls");
     cout << "Optiuni\n";
-    vector<Eveniment>e = evenimenteDisponibile();
     for (int i = 0; i < e.size(); i++) {
         cout << e[i].getDenumire() << endl;
     }
@@ -63,17 +71,15 @@ void DisplayEvenimente(int& alegere)
             return;
         }
         else {
-            alegere = 3;
+            alegere = 4;
             cout << endl << "Nu e o optiune valabila!!!" << endl;
         }
     }
     else {
-        alegere = 3;
+        alegere = 4;
         cout << endl << "Nu sunt evenimente disponibile" << endl;
     }
 }
-
-
 
 void cumparaBilet() {
     vector<Eveniment>e = evenimenteDisponibile();
@@ -82,11 +88,11 @@ void cumparaBilet() {
     }
 }
 
-void DisplayOptiuni()
+void DisplayOptiuni(vector<Eveniment>e)
 {
     system("cls");
     cout << "Optiuni\n";
-    vector<Eveniment>e = evenimenteDisponibile();
+
     for (int i = 0; i < e.size(); i++) {
         cout << i+1 << " - " << e[i].getDenumire() << endl;
     }
@@ -94,11 +100,10 @@ void DisplayOptiuni()
     cout << "Optiunea: ";
 }
 
-void Optiuni(int& alegere)
+void Optiuni(vector<Eveniment>e,int& alegere)
 {
-    vector<Eveniment>e = evenimenteDisponibile();
     system("cls");
-    DisplayOptiuni();
+    DisplayOptiuni(e);
     alegere = getInput()-1;
     if (alegere == -1) { alegere = 3;};
     if (alegere+1 == e.size()+1) { return; }
@@ -109,18 +114,20 @@ void Optiuni(int& alegere)
             b.buyTicket(e[alegere]);
         }
         else {
-            alegere = 3;
+            alegere = 4;
             cout << endl << "Nu e o optiune valabila!!!" << endl;
         }
     }
     else {
-        alegere = 3;
+        alegere = 4;
         cout << endl << "Nu sunt evenimente disponibile" << endl;
     }
 }
 
 int main()
 {
+
+    vector<Eveniment>e = evenimenteDisponibile();
      
     int alegere = 0;
 
@@ -131,18 +138,35 @@ int main()
         alegere = getInput();
         switch (alegere) {
         case 1:
-            DisplayEvenimente(alegere);
+            DisplayEvenimente(e,alegere);
             break;
         case 2:
-            Optiuni(alegere);
+            Optiuni(e,alegere);
             break;
         case 3:
+            AdaugaEveniment(e);
+            break;
+        case 4:
             cout <<endl<< "Inchidere aplicatie!"<<endl;
             break;
         default:
             cout<< endl << "Nu e o optiune valabila!!!" << endl;
             return EXIT_FAILURE;
         }
-    } while (alegere != 3);
+    } while (alegere != 4);
+
+    ofstream f;
+    f.open("fisier.txt", ios::out | ios::trunc);
+    f << e.size() << endl;
+    for (int i = 0; i < e.size(); i++) {
+        string data, ora;
+        data = e[i].getData();
+        ora = e[i].getOra();
+        string buffer(e[i].getDenumire());
+        f << data << endl;
+        f << ora<<endl;
+        f << buffer << endl;
+    }
+    f.close();
     return EXIT_SUCCESS;
 }

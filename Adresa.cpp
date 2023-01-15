@@ -60,4 +60,5 @@ bool Adresa::checkLoc() {
 
 bool Adresa::Rezervare(long locuriRez) {
 	Locatie::setNrMAXlocuri(locuriRez);
+	return true;
 }
