@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Adresa.cpp" />
     <ClCompile Include="Bilete.cpp" />
     <ClCompile Include="Eveniment.cpp" />
     <ClCompile Include="Locatie.cpp" />
     <ClCompile Include="Proiect POO.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Adresa.h" />
     <ClInclude Include="Bilete.h" />
     <ClInclude Include="Eveniment.h" />
     <ClInclude Include="Locatie.h" />

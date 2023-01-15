@@ -1,9 +1,14 @@
 #include <iostream>
+#include <fstream>
 #include "Bilete.h"
-#include "Eveniment.h"
+#include "Bilete.h"
 using namespace std;
 
-Bilete::Bilete() :id(++Eveniment::bileteTotale)
+double Bilete::bileteTotale = 1000;
+double Bilete::bileteVandute = 0;
+double Bilete::bileteDisponibile = 1000;
+
+Bilete::Bilete() :id(++Bilete::bileteTotale)
 {
 		tip = "-";
 		loc = "-";
@@ -32,14 +37,13 @@ void Bilete::setLoc(string tip) {
 }
 
 bool Bilete::checkBilete() {
-	if (Eveniment::bileteTotale == Eveniment::bileteVandute + Eveniment::bileteDisponibile)
+	if (Bilete::bileteTotale == Bilete::bileteVandute + Bilete::bileteDisponibile)
 		return true;
 	else
 		return false;
 }
 
 istream& operator>>(istream& in, Bilete& b) {
-	in >> (Eveniment&)b;
 	cout << "Introduceti tipul de bilet: ";
 	in >> b.tip;
 	cout << "Introduceti locul: ";
@@ -53,7 +57,6 @@ ostream& operator<<(ostream& out,const Bilete b) {
 	out << "ID: " + to_string(b.id) << endl;
 	out <<"Tipul biletului: " + b.tip << endl;
 	out << "Loc: " + b.loc<<endl;
-	out << (Eveniment)b;
 	return out;
 }
 
@@ -67,9 +70,29 @@ Bilete Bilete::operator-(Bilete b) {
 	return *this;
 }
 
-void Bilete::buyTicket() {
-	Bilete::bileteVandute++;
-	Bilete::bileteDisponibile--;
+void Bilete::buyTicket(Eveniment e) {
+	if (bileteDisponibile > 0) {
+		bileteTotale++;
+		bileteDisponibile--;
+		bileteVandute++;
+		ofstream f("bilete.bin", ios::out | ios::binary);
+		if (f.is_open()) {
+			string buffer(e.getDenumire());
+			int length = buffer.length();
+			f.write((char*)&length, sizeof(length));
+			f.write(buffer.c_str(), length + 1);
+			string dash = "-";
+			length = dash.length();
+			f.write((char*)&length, sizeof(length));
+			f.write(dash.c_str(), length + 1);
+			f.write((char*)&id, sizeof(id));
+			f.write((char*)&id, sizeof(id));
+			f.close();
+		}
+		else {
+			cout << "Fisierul nu a putut fi deschis!";
+		}
+	}
 }
 
 void Bilete::showTicket() {
