@@ -3,10 +3,12 @@
 #include "Eveniment.h"
 using namespace std;
 
-class Bilete : public Eveniment {
+class Bilete {
 	
 private:
-	
+	static double bileteTotale;
+	static double bileteVandute;
+	static double bileteDisponibile;
 	const long id;
 	string tip;
 	string loc;
@@ -35,7 +37,7 @@ public:
 	
 	Bilete operator-(Bilete b);									//supraincarcare operator -
 
-	void buyTicket();											//metoda de cumparare a unui bilet
+	void buyTicket(Eveniment e);							    //metoda de cumparare a unui bilet
 
 	void showTicket();											//metoda de afisare a unui bilet
 };

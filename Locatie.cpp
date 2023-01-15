@@ -7,7 +7,7 @@ Locatie::Locatie()
 {
 	nrRanduri=10;
 	nrMAXlocuri = 100;
-	double nrColoane = nrMAXlocuri / nrRanduri;
+	long nrColoane = nrMAXlocuri / nrRanduri;
 	locuri = new int* [nrRanduri];
 	for (int i = 0; i < nrRanduri; i++) locuri[i] = new int[nrColoane];
 	for (int i = 0; i < nrRanduri; i++)
@@ -15,11 +15,11 @@ Locatie::Locatie()
 			locuri[i][j] = 0;
 }
 
-Locatie::Locatie(double nrRanduri, double nrMAXlocuri, int** locuri)
+Locatie::Locatie(long nrRanduri, long nrMAXlocuri)
 {
 	this->nrRanduri = nrRanduri;
 	this->nrMAXlocuri =nrMAXlocuri;
-	double nrColoane = nrMAXlocuri / nrRanduri;
+	long nrColoane = nrMAXlocuri / nrRanduri;
 	this->locuri = new int* [nrRanduri];
 	for (int i = 0; i < nrRanduri; i++) this->locuri[i] = new int[nrColoane];
 	for (int i = 0; i < nrRanduri; i++)
@@ -30,13 +30,7 @@ Locatie::Locatie(double nrRanduri, double nrMAXlocuri, int** locuri)
 Locatie::Locatie(const Locatie& l) {
 	this->nrRanduri = l.nrRanduri;
 	this->nrMAXlocuri = l.nrMAXlocuri;
-	double nrColoane = nrMAXlocuri / nrRanduri;
-	//if (this->locuri != nullptr) {
-	//	for (int i = 0; i < nrRanduri; i++) {
-	//		delete[] locuri[i];
-	//	}
-	//	delete[] locuri;
-	//}
+	long nrColoane = nrMAXlocuri / nrRanduri;
 	this->locuri = new int* [l.nrRanduri];
 	for (int i = 0; i < nrRanduri; i++) this->locuri[i] = new int[nrColoane];
 	for (int i = 0; i < nrRanduri; i++)
@@ -62,18 +56,18 @@ void Locatie::setDenumire(string denumire) {
 		this->denumire = denumire;
 	}
 }
-double  Locatie::getNrMAXlocuri() {
+long  Locatie::getNrMAXlocuri() {
 	return nrMAXlocuri; 
 }
-void  Locatie::setNrMAXlocuri(double nrMAXlocuri) {
+void  Locatie::setNrMAXlocuri(long nrMAXlocuri) {
 	if (nrMAXlocuri >= 0){
 		this->nrMAXlocuri = nrMAXlocuri; 
 	}
 }
-double  Locatie::getNrRanduri() {
+long  Locatie::getNrRanduri() {
 	return nrRanduri; 
 }
-void  Locatie::setNrRanduri(double nrRanduri) {
+void  Locatie::setNrRanduri(long nrRanduri) {
 	if (nrRanduri >= 0) {
 		this->nrRanduri = nrRanduri;
 	}
@@ -82,7 +76,7 @@ int** Locatie::getLocuri() {
 	return locuri;
 }
 	
-void  Locatie::setLocuri(int** locuri, double nrRanduri, double nrColoane){
+void  Locatie::setLocuri(int** locuri, long nrRanduri, long nrColoane){
 	if (locuri != nullptr) {
 		if (this->locuri != nullptr) {
 			for (int i = 0; i < nrRanduri; i++) {
@@ -105,7 +99,7 @@ istream& operator>>(istream& in, Locatie& l) {
 	in >> l.nrRanduri;
 	cout << "Numar locuri: ";
 	in >> l.nrMAXlocuri;
-	double nrColoane = l.nrMAXlocuri / l.nrRanduri;
+	long nrColoane = l.nrMAXlocuri / l.nrRanduri;
 	l.locuri = new int* [l.nrRanduri];
 	for (int i = 0; i < l.nrRanduri; i++) l.locuri[i] = new int[nrColoane];
 	for (int i = 0; i < l.nrRanduri; i++)
@@ -118,7 +112,7 @@ ostream& operator<<(ostream& out, Locatie l) {
 	out << "Denumire locatie: " << l.denumire << endl;
 	out << "Numar randuri: " << l.nrRanduri << endl;
 	out << "Numar locuri: " << l.nrMAXlocuri << endl;
-	double nrColoane = l.nrMAXlocuri / l.nrRanduri;
+	long nrColoane = l.nrMAXlocuri / l.nrRanduri;
 	for (int i = 0; i < l.nrRanduri; i++) {
 		for (int j = 0; j < nrColoane; j++) {
 			out << l.locuri[i][j] << " ";
@@ -142,7 +136,7 @@ Locatie& Locatie::operator++() {
 		delete[] locuri;
 	}
 	nrRanduri++;
-	double nrColoane = nrMAXlocuri / nrRanduri;
+	long nrColoane = nrMAXlocuri / nrRanduri;
 	locuri = new int* [nrRanduri];
 	for (int i = 0; i < nrRanduri; i++) locuri[i] = new int[nrColoane];
 	for (int i = 0; i < nrRanduri; i++)
@@ -159,7 +153,7 @@ Locatie& Locatie::operator--() {
 		delete[] locuri;
 	}
 	nrRanduri--;
-	double nrColoane = nrMAXlocuri / nrRanduri;
+	long nrColoane = nrMAXlocuri / nrRanduri;
 	locuri = new int* [nrRanduri];
 	for (int i = 0; i < nrRanduri; i++) locuri[i] = new int[nrColoane];
 	for (int i = 0; i < nrRanduri; i++)
@@ -186,7 +180,7 @@ bool Locatie::checkLoc() {
 	}
 }
 
-bool Locatie::Rezervare(double locuriRez) {
+bool Locatie::Rezervare(long locuriRez) {
 	int locPosibile = 0;
 	for (int i = 0; i < nrRanduri; i++)
 		for (int j = 0; j < nrMAXlocuri / nrRanduri; j++) {

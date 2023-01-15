@@ -3,10 +3,6 @@
 #include "Eveniment.h"
 using namespace std;
 
-double Eveniment::bileteTotale = 0;
-double Eveniment::bileteVandute = 0;
-double Eveniment::bileteDisponibile = 0;
-
 Eveniment::Eveniment()
 {
 	data = "01.01.2000"; 

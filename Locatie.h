@@ -6,14 +6,14 @@ class Locatie
 {
 private:
 	string denumire;
-	double nrMAXlocuri;
-	double nrRanduri;
+	long nrMAXlocuri;
+	long nrRanduri;
 	int** locuri;
 
 public:
 	Locatie();															//constructor implicit
 
-	Locatie(double nrRanduri, double nrMAXlocuri, int** locuri);	    //constructor cu parametri
+	Locatie(long nrRanduri, long nrMAXlocuri);							//constructor cu parametri
 	
 	Locatie(const Locatie& l);											//constructor de copiere
 	
@@ -23,17 +23,17 @@ public:
 	
 	void setDenumire(string denumire);									//setter pentru denumire
 	
-	double getNrMAXlocuri();											//getter pentru nrMAXlocuri
+	long getNrMAXlocuri();												//getter pentru nrMAXlocuri
 
-	void setNrMAXlocuri(double nrMAXlocuri);							//setter pentru nrMAXlocuri
+	void setNrMAXlocuri(long nrMAXlocuri);								//setter pentru nrMAXlocuri
 	
-	double getNrRanduri();												//getter pentru nrRanduri
+	long getNrRanduri();												//getter pentru nrRanduri
 
-	void setNrRanduri(double nrRanduri);								//setter pentru nrRanduri
+	void setNrRanduri(long nrRanduri);									//setter pentru nrRanduri
 	
 	int** getLocuri();													//getter pentru locuri
 	
-	void setLocuri(int** locuri, double nrRanduri, double nrColoane);	//setter pentru locuri
+	void setLocuri(int** locuri, long nrRanduri, long nrColoane);		//setter pentru locuri
 
 	friend istream& operator>>(istream& in, Locatie& l);				//supraincarcarea operatorului de citire
 	
@@ -47,6 +47,6 @@ public:
 		
 	bool checkLoc();													//metoda verifica loc
 
-	bool Rezervare(double locuriRez);									//metoda rezerva locuri
+	bool Rezervare(long locuriRez);										//metoda rezerva locuri
 };
 
